@@ -5,6 +5,7 @@
 `mkdir -p`-->  
 `cd` file name --> change directory  
 `cd` --> go back one level  
+`which` --> followed by pwd, ls mkdir tells you were you are 
 
 ## Lists 
 `ls` --> list / `ls -l` : long format / `ls -lh` : human readable format  
