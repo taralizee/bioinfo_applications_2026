@@ -7,7 +7,7 @@ Aim :
 
 ## Step 1 : download a conda(micromamba) 
 Program that install and manages other programms 
-
+Either follow the steps or ask copilot 
 
 ```bash
 # Create bin directory in your home if it doesn't exist permits to activate micromamba from anywhere 
@@ -43,4 +43,17 @@ micromamba activate conda-env
 
 ```
 
-## Step : Retrieve sequences from NCBI
+
+## Step 2: Retrieve sequences from NCBI
+To do that we will use the programm EDirect which allow us to search and find biological data from NCBI 
+
+### Download EDirect using micromanba
+
+
+
+esearch	--> searches the NCBI database
+-db nucleotide	--> specifies the nucleotide database
+-query -->	the search term
+efetch	--> retrieves the sequence
+-format fasta --> outputs the sequence in FASTA format
+
