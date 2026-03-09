@@ -1,4 +1,4 @@
-# Build a 16s ribsomial RNA phylogentic tree 
+# Build a 16s rRNA phylogentic tree 
 
 Aim : 
 - Use helper program micromamba --version
@@ -49,11 +49,45 @@ To do that we will use the programm EDirect which allow us to search and find bi
 
 ### Download EDirect using micromanba
 
+```bash
+micromamba create -n conda-sars # create a new environment 
+micromamba activate conda-sars # activate said environment 
+micromamba install perl-io-socket-ssl perl-net-ssleay perl-lwp-protocol-https entrez-direct # install EDirect 
+esearch version # check if it worked
+```
+
+### Download sequences using EDirect 
+
+*esearch*	--> searches the NCBI database
+*-db* --> in which data base to search in 
+For example : protein, nucléotide, genome...
+*-query* -->	the search term
+[Filter] ex. Escherichia coli[Organism]
+AND to add conditions 
+NOT to exclude condition 
+use filters to avoid wrong genes, partial sequences ...
+*efetch*	--> retrieves the sequence
+*-format fasta* --> outputs the sequence in FASTA format 
+*awk* --> returns only the first matching result 
 
 
-esearch	--> searches the NCBI database
--db nucleotide	--> specifies the nucleotide database
--query -->	the search term
-efetch	--> retrieves the sequence
--format fasta --> outputs the sequence in FASTA format
+```bash
+# First ckeck you are in the right directory to create you folder in 
+cd /home/ba-student3/bioinfo_applications_2026/tutorials
 
+# upload sequences into a new file 
+# Run these commands inside the activated conda-sars environment
+esearch -db nucleotide -query "Escherichia coli[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' > all_16s.fasta
+
+esearch -db nucleotide -query "Salmonella enterica[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
+
+esearch -db nucleotide -query "Klebsiella pneumoniae[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
+
+esearch -db nucleotide -query "Bacillus subtilis[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
+
+esearch -db nucleotide -query "Staphylococcus aureus[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
+
+esearch -db nucleotide -query "Lactobacillus casei[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
+
+
+```
