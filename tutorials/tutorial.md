@@ -1,7 +1,7 @@
 # Build a 16s rRNA phylogentic tree 
 
 Aim : 
-- Use helper program micromamba --version
+- Use programs
 - Download sequences from NCBI 
 - Create a phylogentic tree 
 
@@ -58,25 +58,28 @@ esearch version # check if it worked
 
 ### Download sequences using EDirect 
 
-*esearch*	--> searches the NCBI database
-*-db* --> in which data base to search in 
-For example : protein, nucléotide, genome...
-*-query* -->	the search term
-[Filter] ex. Escherichia coli[Organism]
-AND to add conditions 
-NOT to exclude condition 
+*esearch*	--> searches the NCBI database  
+*-db* --> in which data base to search in  
+For example : protein, nucléotide, genome...  
+*-query* --> the search term  
+[Filter] ex. Escherichia coli[Organism]  
+AND to add conditions  
+NOT to exclude condition  
 use filters to avoid wrong genes, partial sequences ...
-*efetch*	--> retrieves the sequence
-*-format fasta* --> outputs the sequence in FASTA format 
-*awk* --> returns only the first matching result 
+*efetch*	--> retrieves the sequence  
+*-format fasta* --> outputs the sequence in FASTA format  
+*awk* --> returns only the first matching result  
 
 
 ```bash
 # First ckeck you are in the right directory to create you folder in 
 cd /home/ba-student3/bioinfo_applications_2026/tutorials
 
-# upload sequences into a new file 
+# Upload sequences into a new file 
+
 # Run these commands inside the activated conda-sars environment
+micromamba activate conda-sars
+
 esearch -db nucleotide -query "Escherichia coli[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' > all_16s.fasta
 
 esearch -db nucleotide -query "Salmonella enterica[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
@@ -89,5 +92,7 @@ esearch -db nucleotide -query "Staphylococcus aureus[Organism] AND 16S ribosomal
 
 esearch -db nucleotide -query "Lactobacillus casei[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
 
-
 ```
+
+# Step 3 : Align sequences 
+Our fasta sequences are now in one folder but they are not aligned 
