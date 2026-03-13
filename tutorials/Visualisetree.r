@@ -28,10 +28,12 @@ tree.df[grepl("PZ054617", tree.df$label), "new_label"] <- "Salmonella enterica"
 final.tree <- rename_taxa(tree.rooted, tree.df, label, new_label)
 
 # visualize the tree
+# hexpand(0.5) adds 50% extra space on the right so long names are not cut off
 ggtree(final.tree) +
   geom_treescale() +
   geom_tiplab(aes(color = label), size = 5) +
-  geom_tippoint(size = 2, fill = "white", color = "black")
+  geom_tippoint(size = 2, fill = "white", color = "black") +
+  hexpand(0.5)
 
-# save to PDF
-ggsave("16S_rRNA_tree.pdf", height = 15, width = 15)
+# save to PDF (wider to fit all names)
+ggsave("16S_rRNA_tree.pdf", height = 15, width = 20)
