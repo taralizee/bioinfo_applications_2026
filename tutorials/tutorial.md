@@ -40,7 +40,6 @@ micromamba create -n conda-env
 
 # Activate the environment
 micromamba activate conda-env
-
 ```
 
 
@@ -91,8 +90,43 @@ esearch -db nucleotide -query "Bacillus subtilis[Organism] AND 16S ribosomal RNA
 esearch -db nucleotide -query "Staphylococcus aureus[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
 
 esearch -db nucleotide -query "Lactobacillus casei[Organism] AND 16S ribosomal RNA AND 1200:2000[Sequence Length]" | efetch -format fasta | awk 'BEGIN{RS=">"; ORS=""} NR==2{print ">"$0}' >> all_16s.fasta
-
 ```
 
 # Step 3 : Align sequences 
 Our fasta sequences are now in one folder but they are not aligned 
+
+## Install Program to align, check and tree 
+
+```bash
+micromamba activate conda-sars
+micromamba install -n conda-sars -c conda-forge -c bioconda -y mafft clipkit raxml
+
+# Verify if tools are installed 
+mafft --version
+clipkit -h | head
+raxmlHPC -v
+```
+
+## Align sequences 
+```bash
+# align sequences in new file
+micromamba activate conda-sars
+cd tutorials
+mafft --auto --thread 2 all_16s.fasta > all_16s_aligned.fasta
+
+# check of the output file
+head -n 20 all_16s_aligned.fasta
+```
+
+## Check alignment with ClipKIT
+To be extra cautious with our alignment, we use ClipKIT to remove sites with too many gaps.
+
+```bash
+# remove highly gapped sites from the alignment
+clipkit all_16s_aligned.fasta -m smart-gap -o all_16s_aligned.clipkit.fasta
+
+# Check output
+head -n 20 all_16s_aligned.clipkit.fasta
+```
+
+
