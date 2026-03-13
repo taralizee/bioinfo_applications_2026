@@ -1,0 +1,78 @@
+
+
+WARNING: RAxML is not checking sequences for duplicate seqs and sites with missing data!
+
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 277 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 4.49%
+
+RAxML rapid hill-climbing mode
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+Executing 1 inferences on the original alignment using 1 distinct randomized MP trees
+
+All free model parameters will be estimated by RAxML
+ML estimate of 25 per site rate categories
+
+Likelihood of final tree will be evaluated and optimized under GAMMA
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 277
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC-PTHREADS --no-seq-check -s all_16s_aligned.clipkit.fasta -m GTRCAT -p 1234719872 -n 16S_tree -T 2 
+
+
+Partition: 0 with name: No Name Provided
+Base frequencies: 0.256 0.230 0.310 0.205 
+
+Inference[0]: Time 0.055735 CAT-based likelihood -3735.656093, best rearrangement setting 3
+alpha[0]: 1.000000 rates[0] ac ag at cg ct gt: 0.000100 5.037219 3.372857 1.478601 9.900528 1.000000 
+
+
+Conducting final model optimizations on all 1 trees under GAMMA-based models ....
+
+Inference[0] final GAMMA-based Likelihood: -4673.950257 tree written to file /home/ba-student3/bioinfo_applications_2026/tutorials/RAxML_result.16S_tree
+
+
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -4673.950257 .... 
+
+Final GAMMA-based Score of best tree -4673.950257
+
+Program execution info written to /home/ba-student3/bioinfo_applications_2026/tutorials/RAxML_info.16S_tree
+Best-scoring ML tree written to: /home/ba-student3/bioinfo_applications_2026/tutorials/RAxML_bestTree.16S_tree
+
+Overall execution time: 0.085468 secs or 0.000024 hours or 0.000001 days
+
