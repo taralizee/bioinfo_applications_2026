@@ -54,7 +54,7 @@ micromamba activate conda-sars # activate said environment
 micromamba install perl-io-socket-ssl perl-net-ssleay perl-lwp-protocol-https entrez-direct # install EDirect 
 esearch version # check if it worked
 ```
-An environment is a separate workspace that contains the specific software and versions needed for a project so they don’t interfere with other programs on the system.
+An environment is a separate workspace that contains the specific software and versions needed for a project so they don’t interfere with other programs on the system.  
 For the rest of this work we will need to activate this environment
 
 ### Download sequences using EDirect 
