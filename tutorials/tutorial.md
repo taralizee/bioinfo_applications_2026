@@ -1,4 +1,4 @@
-# Build a 16s rRNA phylogentic tree 
+# Build a 16s rRNA Phylogenetic Tree 
 
 Aim : 
 - Download and Use programs to build Tree 
