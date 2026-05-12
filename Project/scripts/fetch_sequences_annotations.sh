@@ -22,6 +22,9 @@ START_FROM="${START_FROM:-1}"
 # GFF-only mode: set GFF_ONLY=true to skip FASTA and only download GFF annotations
 GFF_ONLY="${GFF_ONLY:-false}"
 
+# Shared micromamba environment for this project
+ENV_NAME="project_bioinfo"
+
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -29,19 +32,24 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Initialize micromamba if needed
+if ! command -v micromamba &> /dev/null; then
+    echo -e "${RED}ERROR: micromamba is required but not found.${NC}"
+    exit 1
+fi
+
 if ! command -v mamba &> /dev/null; then
     echo -e "${YELLOW}Setting up micromamba...${NC}"
     eval "$(micromamba shell hook --shell bash)"
 fi
 
 # Create environment if it doesn't exist
-if ! micromamba env list | grep -q "ncbi-datasets"; then
-    echo -e "${YELLOW}Creating micromamba environment for NCBI datasets...${NC}"
-    micromamba create -n ncbi-datasets -c bioconda ncbi-datasets-cli -y
+if ! micromamba env list | awk 'NR>2{print $1}' | grep -qx "$ENV_NAME"; then
+    echo -e "${YELLOW}Creating shared micromamba environment: ${ENV_NAME}${NC}"
+    micromamba create -n "$ENV_NAME" -c conda-forge -c bioconda ncbi-datasets-cli blast abricate entrez-direct -y
 fi
 
 # Activate environment
-micromamba activate ncbi-datasets
+micromamba activate "$ENV_NAME"
 
 # Create output directories
 mkdir -p "$FASTA_DIR" "$GFF_DIR" "$TEMP_DIR"

@@ -49,6 +49,11 @@ bash fetch_sequences_annotations.sh
 5. output fasta and gff file 
 
 
+## match existing gene sequences to download strain FASTA 
+
+### download fasta for target gene 
+On NCBI find target gene sequence and download on vscode 
+
 
 
 
