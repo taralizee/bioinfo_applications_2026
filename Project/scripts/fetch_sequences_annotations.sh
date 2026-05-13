@@ -6,7 +6,7 @@
 #' corresponding FASTA sequences and GFF annotations from NCBI using the datasets tool
 #' 
 #' Requirements: micromamba, datasets (from NCBI), bash
-#' Usage: bash fetch_sequences_annotations.sh
+
 
 # Configuration
 CSV_FILE="../Strains_cleaned.csv"
@@ -17,10 +17,10 @@ LOG_FILE="${OUTPUT_DIR}/fetch_log.txt"
 TEMP_DIR="${OUTPUT_DIR}/temp"
 
 # Resume control: set START_FROM=73 to begin at strain 73 (data rows, header excluded)
-START_FROM="${START_FROM:-1}"
+START_FROM="${START_FROM:-1}" # didn't fully load first time
 
 # GFF-only mode: set GFF_ONLY=true to skip FASTA and only download GFF annotations
-GFF_ONLY="${GFF_ONLY:-false}"
+GFF_ONLY="${GFF_ONLY:-false}" # didn't work first time 
 
 # Shared micromamba environment for this project
 ENV_NAME="project_bioinfo"
@@ -31,7 +31,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Initialize micromamba if needed
+# Initialize micromamba 
 if ! command -v micromamba &> /dev/null; then
     echo -e "${RED}ERROR: micromamba is required but not found.${NC}"
     exit 1
@@ -42,11 +42,11 @@ if ! command -v mamba &> /dev/null; then
     eval "$(micromamba shell hook --shell bash)"
 fi
 
-# Create environment if it doesn't exist
+# Create environment 
 if ! micromamba env list | awk 'NR>2{print $1}' | grep -qx "$ENV_NAME"; then
     echo -e "${YELLOW}Creating shared micromamba environment: ${ENV_NAME}${NC}"
     micromamba create -n "$ENV_NAME" -c conda-forge -c bioconda ncbi-datasets-cli -y
-fi
+fi # add NCBI datasets tool for reliable downloads
 
 # Activate environment
 micromamba activate "$ENV_NAME"

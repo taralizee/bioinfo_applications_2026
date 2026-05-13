@@ -6,6 +6,11 @@
 # Purpose: Screen all strain genomes against two target sets with ABRicate:
 #   1. Full set: icaA partial, icaR, mecA, sdrG
 #   2. ica operon only: the full operon sequence
+# 
+# The script runs two independent searches so you can compare the target sets
+# in the final report without needing a separate comparison table:
+#   1. Full set: partial icaA, icaR, mecA, sdrG
+#   2. ica operon only: the full operon sequence
 #
 # Outputs:
 #   raw_outputs/abricate/                      - Raw per-strain ABRicate TSVs
@@ -13,8 +18,6 @@
 #   outputs/GENE_MATCHING_RESULTS.md           - Single report with both runs
 #   outputs/abricate/TRACES.log                - Timestamped execution trace
 #
-# The workflow does not generate a comparison table. It preserves both runs as
-# separate result sections in the same results report.
 ################################################################################
 
 set -euo pipefail
@@ -39,6 +42,8 @@ log_event() {
   echo "[${timestamp}] ${message}" | tee -a "${TRACE_LOG}"
 }
 
+# Ensure the shared bioinformatics environment exists and has the tools needed
+# for downloading databases and running ABRicate.
 ensure_environment() {
   if ! command -v micromamba >/dev/null 2>&1; then
     log_event "ERROR: micromamba is required but was not found."
@@ -62,6 +67,8 @@ prepare_workspace() {
     exit 1
   fi
 
+# Make sure the input strains exist and create the output directories that will
+# hold raw ABRicate reports, cleaned summaries, the database, and the trace log.
   mkdir -p "${PROJECT_DIR}/outputs" "${RAW_DIR}" "${OUT_DIR}" "${DB_ROOT_DIR}"
   : > "${TRACE_LOG}"
 }
@@ -110,6 +117,7 @@ run_abricate_screening() {
     safe_name="${strain_name// /_}"
     raw_file="${RAW_DIR}/${safe_name}_${output_suffix}_raw.tsv"
 
+    # Confirm the target sequences exist before building the database.
     micromamba run -n "${ENV_NAME}" abricate \
       --datadir "${DB_ROOT_DIR}" \
       --db "${db_name}" \
@@ -118,6 +126,7 @@ run_abricate_screening() {
       "${strain_file}" \
       > "${raw_file}"
 
+    # Keep only the highest-identity hit for each strain/gene pair.
     raw_hits=$(awk -F $'\t' -v strain="${strain_name}" 'BEGIN { OFS="\t" }
       NR == 1 { next }
       {
@@ -206,12 +215,14 @@ append_run_section() {
 }
 
 main() {
+  # Set up tools and clean workspace state before starting any searches.
   ensure_environment
   prepare_workspace
 
   log_event "=== GENE MATCHING WORKFLOW STARTED ==="
   log_event "Project directory: ${PROJECT_DIR}"
 
+  # Collect every strain FASTA once and reuse the list for both runs.
   shopt -s nullglob
   strain_files=("${STRAIN_DIR}"/*.fna)
   if [ ${#strain_files[@]} -eq 0 ]; then
