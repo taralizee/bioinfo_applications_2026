@@ -1,0 +1,2 @@
+#FILE	SEQUENCE	START	END	STRAND	GENE	COVERAGE	COVERAGE_MAP	GAPS	%COVERAGE	%IDENTITY	DATABASE	ACCESSION	PRODUCT	RESISTANCE
+/home/ba-student3/bioinfo_applications_2026/Project/data/sequences_annotations/fasta/C10C_GCA_000763625.1.fna	JQHC01000001.1	109136	113635	-	U43366.1	1-4500/4500	===============	0/0	100.00	99.42	target_genes_ica		U43366.1 Staphylococcus epidermidis operon mediating intercellular adhesion: IcaR IcaA IcaD IcaB and IcaC genes complete cds	

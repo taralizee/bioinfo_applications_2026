@@ -45,7 +45,7 @@ fi
 # Create environment if it doesn't exist
 if ! micromamba env list | awk 'NR>2{print $1}' | grep -qx "$ENV_NAME"; then
     echo -e "${YELLOW}Creating shared micromamba environment: ${ENV_NAME}${NC}"
-    micromamba create -n "$ENV_NAME" -c conda-forge -c bioconda ncbi-datasets-cli blast abricate entrez-direct -y
+    micromamba create -n "$ENV_NAME" -c conda-forge -c bioconda ncbi-datasets-cli -y
 fi
 
 # Activate environment

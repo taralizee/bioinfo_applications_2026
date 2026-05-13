@@ -1,0 +1,3 @@
+#FILE	SEQUENCE	START	END	STRAND	GENE	COVERAGE	COVERAGE_MAP	GAPS	%COVERAGE	%IDENTITY	DATABASE	ACCESSION	PRODUCT	RESISTANCE
+/home/ba-student3/bioinfo_applications_2026/Project/data/sequences_annotations/fasta/NIHLM053_GCA_000276405.1.fna	AKGP01000017.1	28335	31125	-	AF245042.1	6-2796/2796	========/======	2/6	99.71	98.60	target_genes		AF245042.1 Staphylococcus epidermidis fibrinogen-binding protein SdrG (sdrG) gene complete cds	
+/home/ba-student3/bioinfo_applications_2026/Project/data/sequences_annotations/fasta/NIHLM053_GCA_000276405.1.fna	AKGP01000048.1	12622	14735	+	KF415244.1	1-2114/2114	===============	0/0	100.00	99.91	target_genes		KF415244.1 Staphylococcus epidermidis strain TN/CN/KSE/1/13 MecA (mecA) gene complete cds	
