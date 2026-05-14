@@ -43,7 +43,7 @@ NIHLM070;Skin;Unsure;GCA_000276485.1;commensal
 NIHLM061;Nasal;Unsure;GCA_000276445.1;commensal
 NIHLM087;Nasal;Unsure;GCA_000276505.1;commensal
 NIHLM088;Nasal;Unsure;GCA_000276525.1;commensal
-MTCC 3382;Nasal;Unsure;GCA_001412455.1;commensal
+MTCC_3382;Nasal;Unsure;GCA_001412455.1;commensal
 CV94;Nasal;Unsure;GCA_002850315.1;commensal
 HESS022;Nasal;Colonization;GCA_015070475.1;commensal
 HESN035b;Nasal;Colonization;GCA_015070555.1;commensal
@@ -51,7 +51,7 @@ NIHLM037;Skin;Unsure;GCA_000276325.1;commensal
 NIHLM053;Skin;Unsure;GCA_000276405.1;commensal
 AK-612;Skin;Diseased;GCA_004343675.4;pathogen
 IRL01;Blood;Diseased;GCA_009685135.1;pathogen
-NCCP 16828;Blood;Diseased;GCA_009769125.1;pathogen
+NCCP_16828;Blood;Diseased;GCA_009769125.1;pathogen
 DAR1907;Blood;Diseased;GCA_002850315.1;pathogen
 SE90;Blood;Diseased;GCA_002749455.1;pathogen
 SE95;Blood;Diseased;GCA_002749515.1;pathogen
@@ -95,7 +95,7 @@ I6-23.1;Ocular;Diseased;GCA_900199525.1;pathogen
 C7;Ocular;Diseased;GCA_900199615.1;pathogen
 I4_5;Ocular;Diseased;GCA_900205815.1;pathogen
 C3;Ocular;Diseased;GCA_900205825.1;pathogen
-MRSE 52-2;Respiratory;Healthy;GCA_002307395.1;commensal
+MRSE_52-2;Respiratory;Healthy;GCA_002307395.1;commensal
 HUR103;Respiratory;Unsure;GCA_002850315.1;unknown
 NIH051668;Respiratory;Unsure;GCA_000275985.2;unknown
 LRKNS083;Respiratory;Colonisation;GCA_001658835.1;unknown
