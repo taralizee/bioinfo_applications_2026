@@ -5,8 +5,9 @@
 
 ## Input Data
 - **Total strains screened**: 120
-- **Target genes**: icaA, icaR, mecA, sdrG
+- **Target genes**: icaA (partial), icaR, mecA, sdrG, ica operon (full)
 - **Matching method**: ABRicate with 90% minid, 80% mincov thresholds
+- **Name normalization**: Strain names with spaces (e.g., "MRSE 52-2") converted to underscores for consistency
 
 ## Results Overview
 
@@ -25,7 +26,8 @@
 | sdrG | AF245042 | 115 | 95.8% |
 | mecA | KF415244 | 47 | 39.2% |
 | icaR | AY138959 | 44 | 36.7% |
-| icaA | U43366.1 | 0 | 0.0% |
+| ica operon | U43366.1 | 43 | 35.8% |
+| icaA (partial) | U43366.1 | 0 | 0.0% |
 
 **Note**: icaA was extracted as a partial sequence (1239 bp, bases 761..1999) from the larger ica operon. This may be the reason for poor detection. Consider using the full icaR sequence instead.
 
