@@ -114,3 +114,6 @@ data/
 # Results (can be regenerated)
 results/
 output/
+
+# Project data (large bioinfo files)
+Project/data/
