@@ -14,7 +14,7 @@ hits_clean <- hits %>%
       gene == "mecA" ~ "mecA",
       gene == "sdrG" ~ "sdrG",
       TRUE ~ NA_character_
-    )
+)
   ) %>%
   filter(!is.na(gene_clean))
 
@@ -42,7 +42,7 @@ final_table <- metadata %>%
   left_join(gene_matrix, by = c("Strain" = "strain")) %>%
   mutate(
     across(c(mecA, sdrG, ica_operon, total_genes_detected),
-           ~ replace_na(.x, 0))
+       ~ replace_na(.x, 0))
   )
 
 # 6. Remove strains with no hits

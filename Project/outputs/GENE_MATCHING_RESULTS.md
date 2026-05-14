@@ -14,11 +14,11 @@
 ### Overall Statistics
 - **Strains with gene hits**: 115 / 120 (95.8%)
 - **Strains WITHOUT gene hits**: 5
-  - HESS022
+  - HESS022 (as a gff)
   - I6-23.1
   - I6-23.2
   - NGS-ED-1109
-  - SE57
+  - SE57 (as a gff)
 
 ### Gene Detection Frequency
 | Gene | Accession | Hits | %Strains |

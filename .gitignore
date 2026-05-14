@@ -117,3 +117,4 @@ output/
 
 # Project data (large bioinfo files)
 Project/data/
+Project/outputs/parsnp_tree/

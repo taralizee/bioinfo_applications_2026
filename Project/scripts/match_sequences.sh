@@ -1,20 +1,13 @@
 #!/bin/bash
 
-################################################################################
-# GENE MATCHING WORKFLOW
-#
-# Purpose: Screen all strain genomes against two target sets with ABRicate:
-#   1. Full set: icaA partial, icaR, mecA, sdrG
-#   2. ica operon only: the full operon sequence
-#
-#
+# This code downloads ABRicate to Screen all strain genomes against the target genes 
+
 # Outputs:
 #   raw_outputs/abricate/                      - Raw per-strain ABRicate TSVs
 #   outputs/abricate/                          - Clean summaries for each run
 #   outputs/GENE_MATCHING_RESULTS.md           - Single report with both runs
 #   outputs/abricate/TRACES.log                - Timestamped execution trace
-#
-################################################################################
+
 
 
 # Preparation: define key variables for directories and parameters.
