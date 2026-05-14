@@ -1,0 +1,10 @@
+type,gene,n_strains,n_present,frequency
+commensal,ica_operon,59,10,16.94915254237288
+commensal,mecA,59,8,13.559322033898304
+commensal,sdrG,59,59,100
+pathogen,ica_operon,51,30,58.82352941176471
+pathogen,mecA,51,34,66.66666666666666
+pathogen,sdrG,51,51,100
+unknown,ica_operon,5,4,80
+unknown,mecA,5,5,100
+unknown,sdrG,5,5,100

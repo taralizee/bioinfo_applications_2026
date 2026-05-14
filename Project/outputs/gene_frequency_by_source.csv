@@ -1,0 +1,19 @@
+Host source,gene,n_strains,n_present,frequency
+Blood,ica_operon,35,22,62.857142857142854
+Blood,mecA,35,22,62.857142857142854
+Blood,sdrG,35,35,100
+Device,ica_operon,7,5,71.42857142857143
+Device,mecA,7,5,71.42857142857143
+Device,sdrG,7,7,100
+Nasal,ica_operon,12,3,25
+Nasal,mecA,12,2,16.666666666666664
+Nasal,sdrG,12,12,100
+Ocular,ica_operon,4,1,25
+Ocular,mecA,4,3,75
+Ocular,sdrG,4,4,100
+Respiratory,ica_operon,6,4,66.66666666666666
+Respiratory,mecA,6,6,100
+Respiratory,sdrG,6,6,100
+Skin,ica_operon,51,9,17.647058823529413
+Skin,mecA,51,9,17.647058823529413
+Skin,sdrG,51,51,100

@@ -11,7 +11,10 @@ Project/
 ├── README.md                    # This file
 ├── Strains_cleaned.csv         # Input: strain metadata with NCBI accessions
 ├── scripts/
-│   └── fetch_sequences_annotations.sh   # Main script to fetch sequences and annotations
+│   └── fetch_sequences_annotations.sh   # Main script to fetch 
+│   └── match_sequences.sh   # match each strain to target genes
+│   └── create_matrix.r   # r script to build matrix containing gene hits and metadata 
+sequences and annotations
 └── sequences_annotations/      # Output directory (created by script)
     ├── fasta/                  # Downloaded FASTA sequence files
     ├── gff/                    # Downloaded GFF annotation files
