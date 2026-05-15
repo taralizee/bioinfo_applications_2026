@@ -2,7 +2,7 @@
 
 ## Overview
 
-The goal of this project is to compare commensal and pathogenic S.epidermis. Genes specific to pathogenic or commensal function have been selected and will be compared among strsains
+The goal of this project is to compare commensal and pathogenic S.epidermis. Genes specific to pathogenic or commensal function have been selected and will be compared among strains
 
 ## Project Structure
 
@@ -46,7 +46,9 @@ Project/
 ```
 
 
-## Data Input : Strains_cleaned.csv
+## Data Input : 
+
+### Strains_cleaned.csv
 
 The input CSV file contains strain metadata with the following columns:
 - `Strain` - strain identifier
@@ -55,16 +57,15 @@ The input CSV file contains strain metadata with the following columns:
 - `accession number` - NCBI RefSeq/GenBank accession (e.g., GCA_011307695.1)
 - `type` - strain type classification
 
+### target_sequences 
 
-## Workflow: Step-by-Step Guide
+- Fasta sequences of target genes downloaded from NCBI 
+
+
+## Step-by-Step Guide
 
 ### 1. Download Genomic Sequences and Annotations
 **Script:** `fetch_sequences_annotations.sh`
-
-```bash
-cd Project/scripts
-bash fetch_sequences_annotations.sh
-```
 
 **What it does:**
 - Creates micromamba environment with required tools (NCBI E-utilities)
@@ -90,21 +91,22 @@ bash fetch_sequences_annotations.sh
 
 **Output files:**
 - `raw_outputs/abricate/` - Raw ABRicate hits for all strains and gene types
-  - Format: `{STRAIN}_{GENE_TYPE}_raw.tsv` (e.g., `1057_all_genes_raw.tsv`)
+- `outputs/abricate/strain_gene_matches_from_raws.tsv` - cleaned version of all hits
+- `outputs/GENE_MATCHING_RESULTS.md`- summary of gene matching process 
 
 
 ### 3. Build Presence/Absence Matrix
 **Script:** `create_matrix.r`
 
 **What it does:**
-- Parses ABRicate output files from `raw_outputs/abricate/`
+- Parses ABRicate output files from `outputs/abricate/`
 - Creates binary presence/absence matrix (1 = gene present, 0 = absent)
 - Integrates strain metadata from `Strains_cleaned.csv`
-- Filters and summarizes gene hits
+- Removes strain without metadata 
 
 **Output files:**
-- `outputs/gene_presence_absence_matrix.csv` - Binary matrix of gene presence across strains
-- `outputs/strains_with_genes.csv` - Strain-to-gene mapping
+- `outputs/gene_presence_absence_matrix.csv` - strain name + gene presence  
+- `outputs/strains_with_genes.csv` - metadata + genes presence
 
 
 ### 4. Analyze Gene Presence Patterns
@@ -118,7 +120,6 @@ bash fetch_sequences_annotations.sh
 **Output files:**
 - `outputs/gene_frequency_by_source.csv` - Gene frequency by host source
 - `outputs/gene_frequency_by_type.csv` - Gene frequency by strain type
-- `outputs/GENE_MATCHING_RESULTS.md` - Summary report of findings
 
 
 ### 5. Prepare Phylogenetic Tree Data
@@ -131,7 +132,6 @@ bash fetch_sequences_annotations.sh
 
 **Output files:**
 - `raw_outputs/parsnp_tree/` - Raw Parsnp output files
-- `outputs/parsnp_tree/` - Processed tree data
 
 
 ### 6. Visualize Tree with Gene Heatmap
@@ -140,19 +140,15 @@ bash fetch_sequences_annotations.sh
 **What it does:**
 - Integrates phylogenetic tree with gene presence data
 - Creates visualization linking evolutionary relationships to gene presence/absence
-- Produces publication-quality plots showing strain relationships and gene distribution
+- Produces plots showing strain relationships and gene distribution
 
 **Output files:**
 - `outputs/parsnp_tree/` - Generated plots and visualizations
   - Phylogenetic tree with heatmap overlay
-  - Gene presence patterns on evolutionary tree
 
 
-## Key Input Files
 
-1. **Strains_cleaned.csv** - Strain metadata and NCBI accessions
-2. **data/target_sequences/*.fasta** - Reference sequences for target genes
-3. **ABRicate databases** - Gene databases for matching
+
 
 
 ## Key Output Files
