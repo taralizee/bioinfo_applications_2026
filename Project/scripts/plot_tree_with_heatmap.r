@@ -1,4 +1,5 @@
 # Tree + metadata + gene presence heatmap
+install.packages("ggnewscale")
 
 library(tidyverse)
 library(ape)
@@ -32,7 +33,7 @@ metadata <- metadata %>%
     Strain = str_replace_all(Strain, " ", "_"),
     type = tolower(type)
   ) %>%
-  select(Strain, type, mecA, ica_operon)
+  select(Strain,Host source, type, mecA, ica_operon)
 
 # Remove duplicate strains
 metadata <- metadata %>%
@@ -55,12 +56,30 @@ heatmap_data <- metadata %>%
   select(mecA, ica_operon)
 
 # 9. Prepare type annotation
-type_data <- metadata %>%
-  select(Strain, type)
+annotation_data <- metadata %>%
+  select(Strain, type, `Host source`)
 
 # 10. Build tree
-p <- ggtree(tree, layout = "rectangular") %<+% type_data +
+p <- ggtree(tree, layout = "rectangular") %<+% annotation_data +
   geom_tiplab(aes(color = type), size = 2.2, align = TRUE, linesize = 0.2) +
+  geom_tippoint(
+    aes(fill = `Host source`),
+    shape = 21,
+    size = 2
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Blood" = "red",
+      "Skin" = "blue",
+      "Nasal" = "green",
+      "Ocular" = "purple",
+      "Respiratory" = "orange",
+      "Device" = "brown",
+      "unknown" = "grey70"
+    ),
+    na.value = "grey70",
+    name = "Host source"
+  ) +
   scale_color_manual(
     values = c(
       "pathogen" = "red",
@@ -73,25 +92,41 @@ p <- ggtree(tree, layout = "rectangular") %<+% type_data +
   theme_tree2() +
   ggtitle("Core-genome phylogenetic tree with gene presence/absence")
 
-# 11. Add heatmap
+
+# 11. Reset fill scale before heatmap
+p <- p + ggnewscale::new_scale_fill()
+
+# 12. Prepare heatmap data as binary factors
+heatmap_data <- metadata %>%
+  column_to_rownames("Strain") %>%
+  select(mecA, ica_operon) %>%
+  mutate(across(everything(), as.factor))
+
+# 13. Add gene presence/absence heatmap
 p2 <- gheatmap(
   p,
   heatmap_data,
   offset = 0.03,
-  width = 0.18,
+  width = 0.12,
   colnames = TRUE,
   colnames_angle = 45,
   colnames_offset_y = 0.5,
   font.size = 2.5
 ) +
-  scale_fill_gradient(
-  low = "#cef99c",
-  high = "#2f6d4d",
-  na.value = "grey80",
-  name = "Gene presence"
-)
+  scale_fill_manual(
+    values = c(
+      "0" = "lightgreen",
+      "1" = "darkgreen"
+    ),
+    na.value = "grey80",
+    name = "Gene presence",
+    labels = c(
+      "0" = "Absent",
+      "1" = "Present"
+    )
+  )
 
-# 12. Save
+# 14. Save
 ggsave(output_pdf, p2, width = 16, height = 22)
 ggsave(output_png, p2, width = 16, height = 22, dpi = 300)
 
