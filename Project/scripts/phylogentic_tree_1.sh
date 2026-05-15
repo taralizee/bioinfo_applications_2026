@@ -37,12 +37,18 @@ echo "$OUTPUT_FILE"
 # Here I selcted CV94_GCA_002850315.1.fna	1
 
 # Create Parsnp input directory and copy FASTA files
-mkdir -p outputs/parsnp_tree
+mkdir -p Project/raw_outputs/parsnp_tree
 
 # Run Parsnp with the selected reference genome
 parsnp \
   -r Project/data/sequences_annotations/fasta/CV94_GCA_002850315.1.fna \
   -d Project/data/sequences_annotations/fasta \
-  -o Project/outputs/parsnp_tree/parsnp_output 
+  -o Project/raw_outputs/parsnp_tree
 
 # output files :
+#parsnp.tree --> Newick format tree file
+#parsnp.ggr --> Core genome alignment in GGR format
+#parsnp.xmfa --> Core genome alignment in XMFA format
+#parsnp.maf --> Core genome alignment in MAF format
+#parsnp.snps.mblocks --> SNPs in the core genome alignment
+#parsnpAligner.log --> Log file with details of the alignment process
