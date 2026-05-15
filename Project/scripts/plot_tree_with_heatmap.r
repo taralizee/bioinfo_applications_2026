@@ -33,7 +33,7 @@ metadata <- metadata %>%
     Strain = str_replace_all(Strain, " ", "_"),
     type = tolower(type)
   ) %>%
-  select(Strain,Host source, type, mecA, ica_operon)
+  select(Strain,Hostsource, type, mecA, ica_operon)
 
 # Remove duplicate strains
 metadata <- metadata %>%

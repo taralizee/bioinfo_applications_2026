@@ -1,4 +1,4 @@
-Strain,Host source,host health,accession number,type,mecA,sdrG,ica_operon,total_genes_detected
+Strain,Hostsource,host health,accession number,type,mecA,sdrG,ica_operon,total_genes_detected
 SESURV_p3_1362,Skin,Healthy,GCA_011307695.1,commensal,0,1,0,1
 SESURV_p1_1200,Skin,Healthy,GCA_011307595.1,commensal,0,1,0,1
 SESURV_p3_0825,Skin,Healthy,GCA_011307475.1,commensal,0,1,0,1
