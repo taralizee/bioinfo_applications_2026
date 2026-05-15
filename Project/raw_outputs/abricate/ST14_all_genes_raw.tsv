@@ -1,2 +1,0 @@
-#FILE	SEQUENCE	START	END	STRAND	GENE	COVERAGE	COVERAGE_MAP	GAPS	%COVERAGE	%IDENTITY	DATABASE	ACCESSION	PRODUCT	RESISTANCE
-/home/ba-student3/bioinfo_applications_2026/Project/data/sequences_annotations/fasta/ST14_GCA_001298115.1.fna	LGJG01000031.1	13248	15916	-	AF245042.1	1-2655/2796	========/======	4/14	94.96	94.75	target_genes_all		AF245042.1 Staphylococcus epidermidis fibrinogen-binding protein SdrG (sdrG) gene complete cds	
