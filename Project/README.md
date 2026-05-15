@@ -151,15 +151,7 @@ The input CSV file contains strain metadata with the following columns:
 
 
 
-## Key Output Files
 
-| File | Purpose |
-|------|---------|
-| `gene_presence_absence_matrix.csv` | Binary matrix of gene presence across all strains |
-| `gene_frequency_by_source.csv` | Gene prevalence by tissue/site source |
-| `gene_frequency_by_type.csv` | Gene prevalence by strain type (commensal/pathogenic) |
-| `GENE_MATCHING_RESULTS.md` | Summary of key findings and statistics |
-| `outputs/parsnp_tree/` | Phylogenetic visualizations with gene heatmap |
 
 
 
