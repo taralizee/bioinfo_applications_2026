@@ -1,49 +1,8 @@
-# Bioinfo Project 
+# Bioinformatics Final Project 
 
 ## Overview
 
 The goal of this project is to compare commensal and pathogenic S.epidermis. Genes specific to pathogenic or commensal function have been selected and will be compared among strains
-
-## Project Structure
-
-```
-Project/
-├── README.md                    # Reposatory guide
-├── Strains_cleaned.csv         # Input: strain metadata with NCBI accessions
-├── scripts/
-│   ├── fetch_sequences_annotations.sh   # Download genomic sequences and annotations
-│   ├── match_sequences.sh               # Use ABRicate to match genes, output clean results
-│   ├── create_matrix.r                  # Build presence/absence matrix from ABRicate output
-│   ├── gene_presence.r                  # Analyze gene presence patterns
-│   ├── phylogentic_tree_1.sh            # Process and prepare phylogenetic tree data
-│   └── plot_tree_with_heatmap.r         # Visualize tree with gene presence heatmap
-├── data/
-│   ├── abricate_db/                     # ABRicate databases
-│   │   ├── target_genes_all/            # All target genes database
-│   │   └── target_genes_ica/            # ICA operon genes database
-│   ├── sequences_annotations/           # Downloaded sequences and annotations
-│   │   ├── fasta/                       # Downloaded FASTA sequence files
-│   │   ├── gff/                         # Downloaded GFF annotation files
-│   │   └── fetch_log.txt                # Detailed fetch log
-│   └── target_sequences/                # Reference target gene sequences
-│       ├── ica operon.fasta
-│       ├── icaA.fasta
-│       ├── icaR.fasta
-│       ├── mecA.fasta
-│       └── sdrG.fasta
-├── raw_outputs/                         # Raw ABRicate and Parsnp results
-│   ├── abricate/                        # Raw ABRicate hits (all strains × gene types)
-│   └── parsnp_tree/                     # Raw phylogenetic tree data
-├── outputs/                             # Processed and summarized results
-│   ├── gene_frequency_by_source.csv     # Gene frequency by host source
-│   ├── gene_frequency_by_type.csv       # Gene frequency by strain type
-│   ├── gene_presence_absence_matrix.csv # Binary matrix of gene presence/absence
-│   ├── GENE_MATCHING_RESULTS.md         # Summary of gene matching results
-│   ├── strains_with_genes.csv           # Strain IDs with matched genes
-│   ├── abricate/                        # Processed ABRicate results
-│   └── parsnp_tree/                     # Phylogenetic tree outputs
-
-```
 
 
 ## Data Input : 
